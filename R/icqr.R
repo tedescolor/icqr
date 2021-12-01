@@ -17,7 +17,7 @@ createf = function(data,u,deltaName,timeName, covNames, IVNames, G){ return(
     n = nrow(data)
     res = 0
     # OSS: weights can be computed only once:
-    weigths = sapply(data$y,FUN = G)
+    weigths = sapply(data[,timeName],FUN = G)
     # OSS: sapply(data$y,FUN = G) can return zero.
     #So we set them to NA and when we will sum (see for loop), we set na.rm = TRUE
     weigths[weigths==0] <- NA
