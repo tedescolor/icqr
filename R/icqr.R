@@ -99,7 +99,7 @@ icqr = function(data, #dataset
     return(beta)
   }else{
     boot_function <- function(original_vector, resample_vector) { # create bootstrap function that is the estimate function with no Nbootstrap and resampled data
-      return( estimate(data = original_vector[resample_vector,],
+      return( icqr(data = original_vector[resample_vector,],
                        attempts = attempts,
                        u = u,
                        method = method,
