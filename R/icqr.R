@@ -67,7 +67,8 @@ icqr = function(data, #dataset
                     bootstrapEpsilon = 1, #when bootstrap, reaserch the minimum in [beta-epsilon, beta + epsilon] (vector interval)
                     verbose = FALSE # print during estimation
 ){
-  KMC = survival::survfit(Surv(y, 1 - delta) ~ 1, data=data) #Kaplan Maier estimator for censor variable
+  formulaSurv = formula(paste("Surv(",timeName[1],", 1 -", deltaName[1],") ~ 1", sep = ""))
+  KMC = survfit(formulaSurv,data = data) #Kaplan Maier estimator for censor variable
   G = KMfunction(KMC) # Kaplan Maier estimator for censor variable as function
   # to avoid local minima, we minimize the function multiple times (attempts)
   # and return the value which obtains the minimum
