@@ -4,7 +4,7 @@ KMfunction = function(KMsurvfit){ # from survfit KM to function KM
     return(KMsurvfit$surv[ # return the $surv value
       which.max( # of the index of the max
         KMsurvfit$time[ # of the times
-          KMsurvfit$time -t <= 0  # among the times which are lower or equal then t
+          KMsurvfit$time -rep(t,length(KMsurvfit$time)) <= 0  # among the times which are lower or equal then t
         ]
       )
     ])
