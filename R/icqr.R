@@ -77,7 +77,7 @@ icqr = function(data, #dataset
   for(i in 1:attempts){
     start =  runif(length(covNames),min = lower, max = upper)
     if(verbose){print(paste(i, " - starting point = ",toString(start)))}
-    if(length(covNames) == 1){ #differentiate, as optim requires, 1 covarate or multiple
+    if(length(covNames) == 1 || method == "L-BFGS-B"){ #differentiate, as optim requires, 1 covarate or multiple for lower and upper
       betas[i,] = stats::optim(par = start,
                         fn  = f,
                         method = method,
